@@ -1,0 +1,8 @@
+# Local LaTeX build files (the release PDF is tracked).
+paper/*.aux
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out
+paper/*.synctex.gz
+paper/*.toc

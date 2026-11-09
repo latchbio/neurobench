@@ -1,0 +1,46 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{latchbench}[2026/11/04 Latch benchmark paper style]
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{tgpagella}
+\RequirePackage[letterpaper,top=0.6in,bottom=0.62in,left=0.62in,right=0.62in]{geometry}
+\RequirePackage{graphicx,xcolor,multicol,caption,titlesec,enumitem,microtype}
+\RequirePackage[hidelinks]{hyperref}
+\definecolor{ink}{HTML}{111111}
+\definecolor{muted}{HTML}{555555}
+\definecolor{placeholder}{HTML}{B5573A}
+\renewcommand\normalsize{\fontsize{8.5pt}{10.6pt}\selectfont}\normalsize
+\setlength\parindent{0pt}
+\setlength\parskip{3.5pt}
+\setlength\columnsep{0.24in}
+\setlength\premulticols{60pt}
+\raggedbottom
+\pagestyle{plain}
+\titleformat{\section}{\fontsize{13pt}{15pt}\selectfont\bfseries}{}{0pt}{}[{\vspace{-2pt}\titlerule[0.6pt]}]
+\titlespacing*{\section}{0pt}{9pt}{5pt}
+\titleformat{\subsection}{\fontsize{9.4pt}{11.2pt}\selectfont\bfseries}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{6pt}{2pt}
+\captionsetup[figure]{labelfont={bf,color=ink},textfont={color=muted},font={footnotesize},labelsep=colon,justification=justified,skip=4pt}
+\setlength\abovecaptionskip{4pt}
+\pdfstringdefDisableCommands{\def\textsuperscript#1{}}
+\newif\ifchain
+\newcommand{\placeholder}[1]{{\color{placeholder}[#1]}}
+\newcommand{\widefig}[3]{\par\noindent\begin{minipage}{\textwidth}\centering\includegraphics[width=#1\textwidth]{#2}\captionof{figure}{#3}\end{minipage}\par\vspace{4pt}}
+\newcommand{\colfig}[3]{\vspace{1pt}\noindent\begin{minipage}{\columnwidth}\centering\includegraphics[width=#1\columnwidth]{#2}\captionof{figure}{#3}\end{minipage}\vspace{2pt}}
+\newcommand{\titleblock}{%
+  \color{ink}\thispagestyle{plain}%
+  {\fontsize{23pt}{27pt}\selectfont\bfseries\BenchTitle\par}%
+  \vspace{3pt}%
+  {\fontsize{11pt}{13.6pt}\selectfont\color{muted}\BenchSubtitle\par}%
+  \vspace{9pt}%
+  {\fontsize{9.6pt}{12pt}\selectfont\bfseries\BenchAuthors\par}%
+  \vspace{6pt}%
+  {\fontsize{7.6pt}{10pt}\selectfont\color{muted}\BenchAffiliations\par}%
+  \vspace{6pt}%
+  {\fontsize{7.6pt}{10pt}\selectfont\color{muted}Correspondence: \BenchCorrespondence\par}%
+  \vspace{5pt}%
+  {\fontsize{9.6pt}{12pt}\selectfont\bfseries Abstract\par}%
+  \vspace{3pt}}
+\newenvironment{abstractblock}{\fontsize{8.8pt}{11pt}\selectfont}{\par}
+\newenvironment{references}{\section*{References}\fontsize{6.7pt}{8.4pt}\selectfont\begin{enumerate}[leftmargin=13pt,itemsep=1.5pt,parsep=0pt,topsep=0pt,label={\arabic*.}]}{\end{enumerate}}
+\AtBeginDocument{\hypersetup{pdftitle={\BenchPdfTitle},pdfauthor={\BenchPdfAuthor}}}
